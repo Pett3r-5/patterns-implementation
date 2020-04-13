@@ -1,8 +1,8 @@
-import {CardboardPackage} from './CardboardPackage'
-import {PlasticPackage} from './PlasticPackage'
-import {Package} from './Package'
-import { CardboardPackageCreationFactory } from './CardboardPackageCreationFactory'
-import { PlasticPackageCreationFactory } from './PlasticPackageCreationFactory'
+import {CardboardPackage} from './packages/CardboardPackage'
+import {PlasticPackage} from './packages/PlasticPackage'
+import {Package} from './packages/Package'
+import { CardboardPackageCreationFactory } from './factories/CardboardPackageCreationFactory'
+import { PlasticPackageCreationFactory } from './factories/PlasticPackageCreationFactory'
 
 const getCardboardPackage = ():Package=> {
     const cardboardPackageCreationFactory:CardboardPackageCreationFactory = new CardboardPackageCreationFactory();
