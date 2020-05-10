@@ -1,3 +1,9 @@
+/*
+The observer pattern might be redundant here in JS because events are already a default feature of the language.
+*/
+
+
+
 import BarChartObserver from './BarChartObserver'
 import PieChartObserver from './PieChartObserver'
 import ClientChartIO from './ClientChartIO'

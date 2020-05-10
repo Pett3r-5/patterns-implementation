@@ -12,4 +12,8 @@ export class Product {
     getProject():Project {
         return this.project;
     }
+
+    public presentPaperWork():Array<any> {
+        return this.project.fetchDocumentation(this.project.id);
+    }
 }
