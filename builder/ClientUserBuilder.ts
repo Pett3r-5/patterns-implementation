@@ -32,7 +32,7 @@ export default class ClientUserBuilder implements Builder {
         this.user.preferences = preferences.map(element=>element)
     }
 
-    build():User{
+    build():ClientUser{
         return this.user
     }
 }

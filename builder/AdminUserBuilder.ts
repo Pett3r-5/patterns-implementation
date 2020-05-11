@@ -8,22 +8,24 @@ export default class AdminUserBuilder implements Builder {
 
 
     setBasicLoginInfo(name:string, password:string):void{
-
+        this.user.name = name
+        this.user.password = password
     }
     
     setBasicAuth(authDTO:AuthDTO):void{
-
+        this.user.email = authDTO.email
+        this.user.permissionLevel = authDTO.permissionLevel
     }
 
     setPermissionLevel(permissionLevel:number):void{
-
+        this.user.permissionLevel = permissionLevel
     }
 
     setAdminGroups(groups:Array<string>):void {
         this.user.adminGroups = groups.map(elem=>elem)
     }
 
-    build():User{
+    build():AdminUser{
         return this.user
     }
 }
