@@ -2,9 +2,11 @@ import AuthDTO from './models/AuthDTO'
 import Address from './models/Address'
 import Builder from './Builder'
 
+/*
+    inner classes are not supported in TS, so this regular implementation doesnt work on method call
+*/
 
-
-export default class ClientUser {
+export default class ClientUnsupportedUser {
     name:string
     password:string
     age:number
@@ -34,7 +36,7 @@ export default class ClientUser {
 
     }
 
-    public static ClientUserBuilder = class implements Builder  {
+    public static ClientUnsupportedUserBuilder = class implements Builder  {
         name:string
         password:string
         age:number
@@ -49,36 +51,41 @@ export default class ClientUser {
         }
 
         getInstance(){
-            return new ClientUser.ClientUserBuilder();
+            return new ClientUnsupportedUser.ClientUnsupportedUserBuilder();
         }
 
-        setBasicLoginInfo(name:string, password:string):void{
+        setBasicLoginInfo(name:string, password:string):any{
             this.name = name
             this.password = password
+            return this
         }
     
-        setBasicAuth(authDTO:AuthDTO):void{
+        setBasicAuth(authDTO:AuthDTO):any{
             this.age = authDTO.age
             this.email =authDTO.email
             this.permissionLevel = authDTO.permissionLevel
             this.recoveringEmail=authDTO.recoveringEmail
+            return this
         }
     
-        setPermissionLevel(permissionLevel:number):void{
+        setPermissionLevel(permissionLevel:number):any{
             this.permissionLevel = permissionLevel
+            return this
         }
         
     
-        public setAddress(address:Address):void {
+        public setAddress(address:Address):any {
             this.address = address;
+            return this
         }
     
-        public setPreferences(preferences:Array<string>):void {
+        public setPreferences(preferences:Array<string>):any {
             this.preferences = preferences.map(element=>element)
+            return this
         }
 
-        build(){
-            return new ClientUser(this.name,
+        public build = ():ClientUnsupportedUser=>(
+            new ClientUnsupportedUser(this.name,
                 this.password,
                 this.age,
                 this.email,
@@ -86,6 +93,6 @@ export default class ClientUser {
                 this.recoveringEmail,
                 this.address,
                 this.preferences)
-        }
+        )
     }
 }
